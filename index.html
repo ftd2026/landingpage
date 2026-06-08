@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ftd</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.75rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      width: 200px;
+    }
+
+    .app-icon-link img {
+      width: 96px;
+      height: 96px;
+      border-radius: 22%;
+      display: block;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .app-icon-link:hover img {
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+
+    .app-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .store-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .store-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      transition: opacity 0.15s;
+    }
+
+    .store-btn:hover { opacity: 0.8; }
+
+    .store-btn.apple {
+      background: #000;
+      color: #fff;
+    }
+
+    .store-btn.google {
+      background: #01875f;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jesus loves you</h1>
+
+  <div class="apps">
+
+    <div class="app-card">
+      <a class="app-icon-link"
+         data-ios="https://apps.apple.com/us/app/bible/id282935706"
+         data-android="https://play.google.com/store/apps/details?id=com.sirma.mobile.bible.android"
+         data-web="https://www.bible.com/bible/1713/PSA.23.CSB"
+         href="https://www.bible.com/bible/1713/PSA.23.CSB"
+         target="_blank" rel="noopener">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/ac/33/dfac33e0-db4d-a3c4-1aad-5d02259a5d8f/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-0-85-220.png/512x512bb.jpg"
+             alt="YouVersion Bible">
+      </a>
+      <span class="app-name">YouVersion Bible</span>
+      <div class="store-links">
+        <a class="store-btn apple"
+           href="https://apps.apple.com/us/app/bible/id282935706"
+           target="_blank" rel="noopener"> App Store</a>
+        <a class="store-btn google"
+           href="https://play.google.com/store/apps/details?id=com.sirma.mobile.bible.android"
+           target="_blank" rel="noopener"> Google Play</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <a class="app-icon-link"
+         data-ios="https://apps.apple.com/us/app/waha-discovery-bible-study/id1530116294"
+         data-android="https://play.google.com/store/apps/details?id=com.kingdomstrategies.waha"
+         data-web="https://web.waha.app/eng"
+         href="https://web.waha.app/eng"
+         target="_blank" rel="noopener">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d6/e6/aa/d6e6aa41-468a-8682-51d0-07314cd007fe/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg"
+             alt="Waha">
+      </a>
+      <span class="app-name">Waha</span>
+      <div class="store-links">
+        <a class="store-btn apple"
+           href="https://apps.apple.com/us/app/waha-discovery-bible-study/id1530116294"
+           target="_blank" rel="noopener"> App Store</a>
+        <a class="store-btn google"
+           href="https://play.google.com/store/apps/details?id=com.kingdomstrategies.waha"
+           target="_blank" rel="noopener"> Google Play</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const ua = navigator.userAgent;
+    const os = /iPhone|iPad|iPod/i.test(ua) ? 'ios'
+             : /Android/i.test(ua) ? 'android'
+             : 'web';
+
+    document.querySelectorAll('.app-icon-link').forEach(link => {
+      link.href = link.dataset[os];
+    });
+  </script>
+
+</body>
+</html>
